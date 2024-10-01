@@ -1,0 +1,42 @@
+#Password generator using practice of if statements, lists, random module, adding all character variables with + to combine all the characters, then finally doing a random.shuffle for that end variable.
+
+
+import random
+from random import shuffle
+
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+# Get users input
+print("Welcome to the PyPassword Generator!")
+nr_letters = int(input("How many letters would you like in your password?\n"))
+nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like?\n"))
+
+# Generate random letters, symbols and numbers from the inputs.
+password = []
+
+if nr_letters > len(letters):
+    print(f"Please enter in a number less than or equal to {len(letters)} letters of the alphabet")
+else:
+    random_letters = random.sample(letters, nr_letters)
+if nr_symbols > len(symbols):
+    print(f"Please enter in a number less than or equal to {len(symbols)} of acceptable symbols")
+else:
+    random_symbols = random.sample(symbols, nr_symbols)
+if nr_numbers > len(numbers):
+    print(f"Please enter in a number less than or equal to {len(numbers)} digits of the base-ten system")
+else:
+    random_numbers = random.sample(numbers, nr_numbers)
+
+# Combine all the random characters for each letter, symbols and numbers to form a password string.
+
+Generated_password = random_letters + random_symbols + random_numbers
+
+
+random.shuffle(Generated_password)
+
+password_new = ''.join(Generated_password)
+
+print(f"Your generated password is: {password_new}")
